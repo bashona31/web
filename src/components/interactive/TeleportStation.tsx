@@ -3,7 +3,6 @@
 import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
-import { Html } from '@react-three/drei';
 import { useGameStore } from '@/store/gameStore';
 
 interface TeleportStationProps {
@@ -17,8 +16,6 @@ export default function TeleportStation({ position, id, label }: TeleportStation
   const ringRef = useRef<THREE.Mesh>(null);
   const ring2Ref = useRef<THREE.Mesh>(null);
 
-  const playerPos = useGameStore((state) => state.player.position);
-
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime();
     if (ringRef.current) {
@@ -29,12 +26,6 @@ export default function TeleportStation({ position, id, label }: TeleportStation
       ring2Ref.current.position.y = 0.5 + Math.sin(t * 2) * 0.1;
     }
   });
-
-  const dist = Math.sqrt(
-    (playerPos[0] - position[0]) ** 2 +
-    (playerPos[2] - position[2]) ** 2
-  );
-  const isNearby = dist < 4;
 
   return (
     <group ref={stationRef} position={position}>
@@ -98,21 +89,17 @@ export default function TeleportStation({ position, id, label }: TeleportStation
         );
       })}
 
-      {/* Label */}
-      <Html position={[0, 2.5, 0]} center>
-        <div className="text-cyan-400 font-cyber text-xs tracking-widest bg-black/60 px-2 py-0.5 rounded border border-cyan-500/30">
-          {label}
-        </div>
-      </Html>
-
-      {/* Interaction hint */}
-      {isNearby && (
-        <Html position={[0, 1.5, 0]} center>
-          <div className="text-white font-cyber text-[10px] bg-purple-900/80 px-2 py-0.5 rounded border border-purple-400/50 animate-pulse">
-            [F] TELEPORT
-          </div>
-        </Html>
-      )}
+      {/* Floating label indicator */}
+      <mesh position={[0, 2.5, 0]}>
+        <planeGeometry args={[2, 0.4]} />
+        <meshStandardMaterial
+          color="#001122"
+          emissive="#00f5ff"
+          emissiveIntensity={0.5}
+          transparent
+          opacity={0.6}
+        />
+      </mesh>
 
       <pointLight position={[0, 1, 0]} intensity={1} color="#00f5ff" distance={6} decay={2} />
     </group>

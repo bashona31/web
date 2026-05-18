@@ -2,7 +2,6 @@
 
 import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Points, PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
 
 function FogParticles() {
@@ -31,8 +30,16 @@ function FogParticles() {
   });
 
   return (
-    <Points ref={ref} positions={positions} stride={3} frustumCulled={false}>
-      <PointMaterial
+    <points ref={ref} frustumCulled={false}>
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          count={count}
+          array={positions}
+          itemSize={3}
+        />
+      </bufferGeometry>
+      <pointsMaterial
         transparent
         color="#00f5ff"
         size={0.15}
@@ -41,7 +48,7 @@ function FogParticles() {
         opacity={0.3}
         blending={THREE.AdditiveBlending}
       />
-    </Points>
+    </points>
   );
 }
 
@@ -73,8 +80,16 @@ function Fireflies() {
   });
 
   return (
-    <Points ref={ref} positions={positions} stride={3} frustumCulled={false}>
-      <PointMaterial
+    <points ref={ref} frustumCulled={false}>
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          count={count}
+          array={positions}
+          itemSize={3}
+        />
+      </bufferGeometry>
+      <pointsMaterial
         transparent
         color="#39ff14"
         size={0.08}
@@ -83,7 +98,7 @@ function Fireflies() {
         opacity={0.8}
         blending={THREE.AdditiveBlending}
       />
-    </Points>
+    </points>
   );
 }
 
@@ -115,8 +130,16 @@ function SporeParticles() {
   });
 
   return (
-    <Points ref={ref} positions={positions} stride={3} frustumCulled={false}>
-      <PointMaterial
+    <points ref={ref} frustumCulled={false}>
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          count={count}
+          array={positions}
+          itemSize={3}
+        />
+      </bufferGeometry>
+      <pointsMaterial
         transparent
         color="#b700ff"
         size={0.06}
@@ -125,7 +148,7 @@ function SporeParticles() {
         opacity={0.5}
         blending={THREE.AdditiveBlending}
       />
-    </Points>
+    </points>
   );
 }
 
