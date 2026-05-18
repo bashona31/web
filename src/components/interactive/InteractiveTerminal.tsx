@@ -3,7 +3,6 @@
 import { useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
-import { Html } from '@react-three/drei';
 import { useGameStore } from '@/store/gameStore';
 
 interface InteractiveTerminalProps {
@@ -14,11 +13,10 @@ interface InteractiveTerminalProps {
 export default function InteractiveTerminal({ position, id }: InteractiveTerminalProps) {
   const terminalRef = useRef<THREE.Group>(null);
   const screenRef = useRef<THREE.Mesh>(null);
-  const [isNearby, setIsNearby] = useState(false);
+  const indicatorRef = useRef<THREE.Mesh>(null);
 
   const playerPos = useGameStore((state) => state.player.position);
   const showTerminal = useGameStore((state) => state.showTerminal);
-  const setShowTerminal = useGameStore((state) => state.setShowTerminal);
 
   useFrame(({ clock }) => {
     if (screenRef.current) {
@@ -26,12 +24,17 @@ export default function InteractiveTerminal({ position, id }: InteractiveTermina
       material.emissiveIntensity = 1.5 + Math.sin(clock.getElapsedTime() * 3) * 0.3;
     }
 
-    // Check player proximity
+    // Proximity indicator
     const dist = Math.sqrt(
       (playerPos[0] - position[0]) ** 2 +
       (playerPos[2] - position[2]) ** 2
     );
-    setIsNearby(dist < 3);
+    if (indicatorRef.current) {
+      indicatorRef.current.visible = dist < 3 && showTerminal !== id;
+      if (indicatorRef.current.visible) {
+        indicatorRef.current.position.y = 2.2 + Math.sin(clock.getElapsedTime() * 2) * 0.1;
+      }
+    }
   });
 
   return (
@@ -72,14 +75,17 @@ export default function InteractiveTerminal({ position, id }: InteractiveTermina
         <meshStandardMaterial color="#1a1a2a" roughness={0.5} metalness={0.7} />
       </mesh>
 
-      {/* Interaction prompt */}
-      {isNearby && showTerminal !== id && (
-        <Html position={[0, 2.2, 0]} center>
-          <div className="bg-black/80 border border-cyan-400 px-3 py-1 rounded text-cyan-400 font-cyber text-xs whitespace-nowrap">
-            Press [E] to interact
-          </div>
-        </Html>
-      )}
+      {/* Interaction indicator (glowing sphere) */}
+      <mesh ref={indicatorRef} position={[0, 2.2, 0]} visible={false}>
+        <sphereGeometry args={[0.15, 16, 16]} />
+        <meshStandardMaterial
+          color="#00f5ff"
+          emissive="#00f5ff"
+          emissiveIntensity={3}
+          transparent
+          opacity={0.8}
+        />
+      </mesh>
 
       <pointLight position={[0, 1.5, 0.5]} intensity={0.5} color="#00f5ff" distance={4} decay={2} />
     </group>

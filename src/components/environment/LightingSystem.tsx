@@ -62,7 +62,6 @@ export default function LightingSystem() {
         intensity={3}
         color="#ffd700"
         castShadow
-        target-position={[0, 0, -40]}
       />
 
       {/* River glow lights */}
