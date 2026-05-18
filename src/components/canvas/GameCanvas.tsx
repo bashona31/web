@@ -2,12 +2,6 @@
 
 import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
-import {
-  EffectComposer,
-  Bloom,
-  ChromaticAberration,
-  Vignette,
-} from '@react-three/postprocessing';
 import GameWorld from './GameWorld';
 import PlayerController from '../player/PlayerController';
 import CameraSystem from '../camera/CameraSystem';
@@ -25,6 +19,8 @@ export default function GameCanvas() {
         alpha: false,
         powerPreference: 'high-performance',
         stencil: false,
+        toneMapping: 3, // ACESFilmicToneMapping
+        toneMappingExposure: 1.2,
       }}
       dpr={[1, 2]}
       style={{ width: '100vw', height: '100vh' }}
@@ -40,23 +36,6 @@ export default function GameCanvas() {
         <CameraSystem />
         <ParticleSystem />
       </Suspense>
-
-      <EffectComposer multisampling={0}>
-        <Bloom
-          intensity={1.5}
-          luminanceThreshold={0.2}
-          luminanceSmoothing={0.9}
-          mipmapBlur
-        />
-        <ChromaticAberration
-          offset={[0.0005, 0.0005]}
-        />
-        <Vignette
-          eskil={false}
-          offset={0.1}
-          darkness={0.8}
-        />
-      </EffectComposer>
     </Canvas>
   );
 }
