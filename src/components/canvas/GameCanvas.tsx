@@ -8,7 +8,6 @@ import {
   ChromaticAberration,
   Vignette,
 } from '@react-three/postprocessing';
-import { BlendFunction } from 'postprocessing';
 import GameWorld from './GameWorld';
 import PlayerController from '../player/PlayerController';
 import CameraSystem from '../camera/CameraSystem';
@@ -50,7 +49,6 @@ export default function GameCanvas() {
           mipmapBlur
         />
         <ChromaticAberration
-          blendFunction={BlendFunction.NORMAL}
           offset={[0.0005, 0.0005]}
         />
         <Vignette
