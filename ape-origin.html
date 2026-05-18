@@ -1,0 +1,584 @@
+<m-group id="ape-origin-world">
+
+  <!-- ============================================ -->
+  <!-- APE ORIGIN: THE LOST JUNGLE                  -->
+  <!-- MML Metaverse Experience for OthersideMeta   -->
+  <!-- Vibecode Camp Submission                     -->
+  <!-- ============================================ -->
+
+  <!-- === LIGHTING SYSTEM === -->
+  <m-light type="directional" x="20" y="40" z="-15" intensity="0.6" color="#ffe4b5" cast-shadows="true"></m-light>
+  <m-light type="ambient" intensity="0.15" color="#1a2a4a"></m-light>
+  <m-light type="point" x="0" y="5" z="-35" intensity="2" color="#00f5ff" distance="25"></m-light>
+  <m-light type="point" x="30" y="5" z="10" intensity="1.5" color="#b700ff" distance="20"></m-light>
+  <m-light type="point" x="-25" y="5" z="-15" intensity="1.5" color="#39ff14" distance="20"></m-light>
+  <m-light type="point" x="15" y="3" z="0" intensity="1" color="#ff6b00" distance="12"></m-light>
+
+  <!-- === JUNGLE FLOOR === -->
+  <m-cube id="ground" x="0" y="-0.5" z="0" width="200" height="1" depth="200" color="#0a1a0a" opacity="1"></m-cube>
+
+  <!-- Glowing ground patches -->
+  <m-cube x="-15" y="0.01" z="10" width="4" height="0.05" depth="4" color="#00ff44" opacity="0.3">
+    <m-attr-anim attr="opacity" start="0.2" end="0.5" duration="3000" loop="true" easing="easeInOut"></m-attr-anim>
+  </m-cube>
+  <m-cube x="20" y="0.01" z="-8" width="3" height="0.05" depth="3" color="#00ff44" opacity="0.3">
+    <m-attr-anim attr="opacity" start="0.15" end="0.45" duration="4000" loop="true" easing="easeInOut"></m-attr-anim>
+  </m-cube>
+  <m-cube x="-30" y="0.01" z="-20" width="5" height="0.05" depth="5" color="#39ff14" opacity="0.25">
+    <m-attr-anim attr="opacity" start="0.15" end="0.4" duration="3500" loop="true" easing="easeInOut"></m-attr-anim>
+  </m-cube>
+  <m-cube x="35" y="0.01" z="15" width="3.5" height="0.05" depth="3.5" color="#00ff88" opacity="0.2">
+    <m-attr-anim attr="opacity" start="0.1" end="0.35" duration="4500" loop="true" easing="easeInOut"></m-attr-anim>
+  </m-cube>
+
+
+
+  <!-- === ANCIENT TEMPLE (Central) === -->
+  <m-group id="temple" x="0" y="0" z="-40">
+    <!-- Temple Base Platform -->
+    <m-cube x="0" y="0.5" z="0" width="20" height="1" depth="20" color="#1a1a2a"></m-cube>
+
+    <!-- Steps -->
+    <m-cube x="0" y="1" z="8" width="12" height="0.5" depth="2" color="#1a1a2a"></m-cube>
+    <m-cube x="0" y="1.5" z="6.5" width="10" height="0.5" depth="2" color="#1a1a2a"></m-cube>
+    <m-cube x="0" y="2" z="5" width="8" height="0.5" depth="2" color="#1a1a2a"></m-cube>
+    <m-cube x="0" y="2.5" z="3.5" width="6" height="0.5" depth="2" color="#1a1a2a"></m-cube>
+
+    <!-- Main temple body -->
+    <m-cube x="0" y="5" z="0" width="14" height="8" depth="14" color="#0a0a1a"></m-cube>
+
+    <!-- Temple Pillars (front) -->
+    <m-cylinder x="-5" y="5" z="7" radius="0.4" height="9" color="#2a2a3a"></m-cylinder>
+    <m-cylinder x="-2.5" y="5" z="7" radius="0.4" height="9" color="#2a2a3a"></m-cylinder>
+    <m-cylinder x="2.5" y="5" z="7" radius="0.4" height="9" color="#2a2a3a"></m-cylinder>
+    <m-cylinder x="5" y="5" z="7" radius="0.4" height="9" color="#2a2a3a"></m-cylinder>
+
+    <!-- Temple Pillars (back) -->
+    <m-cylinder x="-5" y="5" z="-7" radius="0.4" height="9" color="#2a2a3a"></m-cylinder>
+    <m-cylinder x="5" y="5" z="-7" radius="0.4" height="9" color="#2a2a3a"></m-cylinder>
+
+    <!-- Temple Roof (pyramid) -->
+    <m-cube x="0" y="10.5" z="0" width="15" height="2" depth="15" color="#1a0a2a" rx="0" ry="45" rz="0"></m-cube>
+
+    <!-- Neon edge strips -->
+    <m-cube x="0" y="9" z="7.1" width="14" height="0.1" depth="0.05" color="#00f5ff" opacity="0.9">
+      <m-attr-anim attr="opacity" start="0.6" end="1" duration="2000" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-cube>
+    <m-cube x="0" y="1" z="7.1" width="14" height="0.1" depth="0.05" color="#00f5ff" opacity="0.9">
+      <m-attr-anim attr="opacity" start="0.6" end="1" duration="2000" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-cube>
+
+    <!-- Central Altar Energy Source -->
+    <m-sphere id="altar-core" x="0" y="3" z="0" radius="1.2" color="#ffd700" opacity="0.8">
+      <m-attr-anim attr="ry" start="0" end="360" duration="5000" loop="true" easing="linear"></m-attr-anim>
+      <m-attr-anim attr="opacity" start="0.6" end="1" duration="2000" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-sphere>
+
+    <!-- Floating Rings around altar -->
+    <m-cylinder x="0" y="3.5" z="0" radius="2.5" height="0.05" color="#00f5ff" opacity="0.7" rx="45">
+      <m-attr-anim attr="ry" start="0" end="360" duration="8000" loop="true" easing="linear"></m-attr-anim>
+    </m-cylinder>
+    <m-cylinder x="0" y="3.5" z="0" radius="3" height="0.05" color="#b700ff" opacity="0.6" rx="60" rz="45">
+      <m-attr-anim attr="ry" start="360" end="0" duration="10000" loop="true" easing="linear"></m-attr-anim>
+    </m-cylinder>
+
+    <!-- Temple glow light -->
+    <m-light type="point" x="0" y="4" z="0" intensity="2.5" color="#ffd700" distance="18"></m-light>
+  </m-group>
+
+
+
+  <!-- === NEON RIVER === -->
+  <m-group id="neon-river">
+    <m-cube x="-30" y="-0.1" z="15" width="4" height="0.3" depth="8" color="#003344" opacity="0.7">
+      <m-attr-anim attr="opacity" start="0.5" end="0.9" duration="2500" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-cube>
+    <m-cube x="-20" y="-0.1" z="12" width="4" height="0.3" depth="8" color="#003344" opacity="0.7" ry="15">
+      <m-attr-anim attr="opacity" start="0.5" end="0.9" duration="3000" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-cube>
+    <m-cube x="-10" y="-0.1" z="8" width="4" height="0.3" depth="8" color="#003344" opacity="0.7" ry="25">
+      <m-attr-anim attr="opacity" start="0.5" end="0.9" duration="2800" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-cube>
+    <m-cube x="0" y="-0.1" z="5" width="4" height="0.3" depth="8" color="#003344" opacity="0.7" ry="30">
+      <m-attr-anim attr="opacity" start="0.5" end="0.9" duration="2600" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-cube>
+    <m-cube x="10" y="-0.1" z="2" width="4" height="0.3" depth="8" color="#003344" opacity="0.7" ry="20">
+      <m-attr-anim attr="opacity" start="0.5" end="0.9" duration="3200" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-cube>
+    <m-cube x="20" y="-0.1" z="-2" width="4" height="0.3" depth="8" color="#003344" opacity="0.7" ry="10">
+      <m-attr-anim attr="opacity" start="0.5" end="0.9" duration="2900" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-cube>
+    <!-- River glow lights -->
+    <m-light type="point" x="-20" y="0.5" z="12" intensity="0.8" color="#00f5ff" distance="6"></m-light>
+    <m-light type="point" x="0" y="0.5" z="5" intensity="0.8" color="#00f5ff" distance="6"></m-light>
+    <m-light type="point" x="15" y="0.5" z="0" intensity="0.8" color="#00f5ff" distance="6"></m-light>
+  </m-group>
+
+  <!-- === CYBER TREES === -->
+  <!-- Tree 1 -->
+  <m-group id="tree-1" x="-12" y="0" z="15">
+    <m-cylinder x="0" y="3" z="0" radius="0.3" height="6" color="#1a0a00"></m-cylinder>
+    <m-sphere x="0" y="7" z="0" radius="2.5" color="#0a2a0a" opacity="0.9"></m-sphere>
+    <m-cylinder x="0.25" y="3" z="0" radius="0.03" height="5" color="#39ff14" opacity="0.8"></m-cylinder>
+    <m-sphere x="1" y="7.5" z="0.5" radius="0.15" color="#39ff14">
+      <m-attr-anim attr="opacity" start="0.5" end="1" duration="1500" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-sphere>
+    <m-sphere x="-0.8" y="8" z="-0.3" radius="0.12" color="#39ff14">
+      <m-attr-anim attr="opacity" start="0.3" end="1" duration="2000" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-sphere>
+    <m-light type="point" x="0" y="1" z="0" intensity="0.3" color="#39ff14" distance="4"></m-light>
+  </m-group>
+
+  <!-- Tree 2 -->
+  <m-group id="tree-2" x="18" y="0" z="20">
+    <m-cylinder x="0" y="4" z="0" radius="0.4" height="8" color="#1a0a00"></m-cylinder>
+    <m-sphere x="0" y="9" z="0" radius="3" color="#0a2a0a" opacity="0.9"></m-sphere>
+    <m-cylinder x="-0.3" y="4" z="0.1" radius="0.02" height="6" color="#00f5ff" opacity="0.7"></m-cylinder>
+    <m-sphere x="1.5" y="9.5" z="0.8" radius="0.15" color="#00f5ff">
+      <m-attr-anim attr="opacity" start="0.4" end="1" duration="1800" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-sphere>
+    <m-light type="point" x="0" y="1" z="0" intensity="0.3" color="#00f5ff" distance="4"></m-light>
+  </m-group>
+
+  <!-- Tree 3 -->
+  <m-group id="tree-3" x="-25" y="0" z="-5">
+    <m-cylinder x="0" y="3.5" z="0" radius="0.35" height="7" color="#1a0a00"></m-cylinder>
+    <m-sphere x="0" y="8" z="0" radius="2.8" color="#0a2a0a" opacity="0.85"></m-sphere>
+    <m-cylinder x="0.2" y="3.5" z="-0.1" radius="0.025" height="5.5" color="#b700ff" opacity="0.75"></m-cylinder>
+    <m-sphere x="-1" y="8.5" z="0.6" radius="0.13" color="#b700ff">
+      <m-attr-anim attr="opacity" start="0.5" end="1" duration="2200" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-sphere>
+    <m-light type="point" x="0" y="1" z="0" intensity="0.3" color="#b700ff" distance="4"></m-light>
+  </m-group>
+
+  <!-- Tree 4 -->
+  <m-group id="tree-4" x="30" y="0" z="-10">
+    <m-cylinder x="0" y="2.5" z="0" radius="0.25" height="5" color="#1a0a00"></m-cylinder>
+    <m-sphere x="0" y="5.5" z="0" radius="2" color="#0a2a0a" opacity="0.9"></m-sphere>
+    <m-cylinder x="0.18" y="2.5" z="0.05" radius="0.02" height="4" color="#ff6b00" opacity="0.7"></m-cylinder>
+    <m-light type="point" x="0" y="1" z="0" intensity="0.25" color="#ff6b00" distance="3.5"></m-light>
+  </m-group>
+
+  <!-- Tree 5-8 (deeper jungle) -->
+  <m-group id="tree-5" x="-40" y="0" z="-25">
+    <m-cylinder x="0" y="4" z="0" radius="0.4" height="8" color="#1a0a00"></m-cylinder>
+    <m-sphere x="0" y="9" z="0" radius="3.2" color="#0a2a0a" opacity="0.85"></m-sphere>
+    <m-light type="point" x="0" y="1" z="0" intensity="0.2" color="#39ff14" distance="4"></m-light>
+  </m-group>
+  <m-group id="tree-6" x="40" y="0" z="25">
+    <m-cylinder x="0" y="3" z="0" radius="0.3" height="6" color="#1a0a00"></m-cylinder>
+    <m-sphere x="0" y="7" z="0" radius="2.5" color="#0a2a0a" opacity="0.9"></m-sphere>
+    <m-light type="point" x="0" y="1" z="0" intensity="0.2" color="#00f5ff" distance="4"></m-light>
+  </m-group>
+  <m-group id="tree-7" x="-35" y="0" z="30">
+    <m-cylinder x="0" y="3.5" z="0" radius="0.35" height="7" color="#1a0a00"></m-cylinder>
+    <m-sphere x="0" y="8" z="0" radius="2.8" color="#0a2a0a" opacity="0.88"></m-sphere>
+  </m-group>
+  <m-group id="tree-8" x="25" y="0" z="-30">
+    <m-cylinder x="0" y="4.5" z="0" radius="0.45" height="9" color="#1a0a00"></m-cylinder>
+    <m-sphere x="0" y="10" z="0" radius="3.5" color="#0a2a0a" opacity="0.85"></m-sphere>
+  </m-group>
+
+
+
+  <!-- === GIANT MUSHROOMS === -->
+  <m-group id="mushroom-1" x="8" y="0" z="12">
+    <m-cylinder x="0" y="1.5" z="0" radius="0.2" height="3" color="#2a1a3a"></m-cylinder>
+    <m-sphere x="0" y="3.5" z="0" radius="1.5" color="#3a0a4a" opacity="0.9" sy="0.5">
+      <m-attr-anim attr="sy" start="0.48" end="0.52" duration="3000" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-sphere>
+    <m-sphere x="0.5" y="3.8" z="0.3" radius="0.1" color="#ff00ff">
+      <m-attr-anim attr="opacity" start="0.5" end="1" duration="1500" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-sphere>
+    <m-sphere x="-0.4" y="3.7" z="-0.5" radius="0.08" color="#ff00ff">
+      <m-attr-anim attr="opacity" start="0.3" end="1" duration="2000" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-sphere>
+    <m-light type="point" x="0" y="4" z="0" intensity="0.4" color="#b700ff" distance="5"></m-light>
+  </m-group>
+
+  <m-group id="mushroom-2" x="-18" y="0" z="-12">
+    <m-cylinder x="0" y="2" z="0" radius="0.25" height="4" color="#2a1a3a"></m-cylinder>
+    <m-sphere x="0" y="4.5" z="0" radius="2" color="#3a0a4a" opacity="0.85" sy="0.5">
+      <m-attr-anim attr="sy" start="0.47" end="0.53" duration="3500" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-sphere>
+    <m-light type="point" x="0" y="5" z="0" intensity="0.5" color="#b700ff" distance="6"></m-light>
+  </m-group>
+
+  <m-group id="mushroom-3" x="22" y="0" z="8">
+    <m-cylinder x="0" y="1" z="0" radius="0.15" height="2" color="#2a1a3a"></m-cylinder>
+    <m-sphere x="0" y="2.5" z="0" radius="1" color="#4a0a5a" opacity="0.9" sy="0.5"></m-sphere>
+    <m-light type="point" x="0" y="3" z="0" intensity="0.3" color="#ff00ff" distance="4"></m-light>
+  </m-group>
+
+  <!-- === APE RUINS 1 === -->
+  <m-group id="ruins-1" x="30" y="0" z="10">
+    <!-- Broken pillars -->
+    <m-cylinder x="3" y="2" z="3" radius="0.5" height="4" color="#2a2a1a" rx="5"></m-cylinder>
+    <m-cylinder x="-3" y="3" z="2" radius="0.5" height="6" color="#2a2a1a" rx="-3" rz="2"></m-cylinder>
+    <m-cylinder x="2" y="1.5" z="-3" radius="0.4" height="3" color="#2a2a1a" rz="-8"></m-cylinder>
+    <m-cylinder x="-2" y="2.5" z="-2" radius="0.45" height="5" color="#2a2a1a" rx="4"></m-cylinder>
+
+    <!-- Broken wall -->
+    <m-cube x="-4" y="2" z="0" width="4" height="4" depth="0.5" color="#1a1a0a" ry="15" rz="5"></m-cube>
+    <m-cube x="4" y="1.5" z="-2" width="3" height="3" depth="0.5" color="#1a1a0a" ry="-10"></m-cube>
+
+    <!-- Ape Statue -->
+    <m-cylinder x="0" y="1.5" z="0" radius="0.8" height="2" color="#3a3a3a"></m-cylinder>
+    <m-sphere x="0" y="3.5" z="0" radius="0.7" color="#3a3a3a"></m-sphere>
+    <!-- Glowing eyes -->
+    <m-sphere x="-0.2" y="3.6" z="0.6" radius="0.1" color="#ff0000">
+      <m-attr-anim attr="opacity" start="0.6" end="1" duration="2000" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-sphere>
+    <m-sphere x="0.2" y="3.6" z="0.6" radius="0.1" color="#ff0000">
+      <m-attr-anim attr="opacity" start="0.6" end="1" duration="2000" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-sphere>
+
+    <!-- Glowing inscription circle -->
+    <m-cylinder x="0" y="0.05" z="0" radius="5" height="0.05" color="#ffd700" opacity="0.4">
+      <m-attr-anim attr="opacity" start="0.2" end="0.6" duration="4000" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-cylinder>
+
+    <m-light type="point" x="0" y="4" z="0" intensity="0.5" color="#ffd700" distance="10"></m-light>
+  </m-group>
+
+  <!-- === APE RUINS 2 === -->
+  <m-group id="ruins-2" x="-25" y="0" z="-15">
+    <m-cylinder x="2.5" y="1.5" z="2.5" radius="0.45" height="3" color="#2a2a1a" rx="6"></m-cylinder>
+    <m-cylinder x="-2.5" y="2" z="1" radius="0.5" height="4" color="#2a2a1a" rz="-4"></m-cylinder>
+    <m-cylinder x="0" y="2.5" z="-3" radius="0.4" height="5" color="#2a2a1a" rx="-5"></m-cylinder>
+
+    <m-cube x="0" y="0.5" z="0" width="2" height="1" depth="2" color="#2a2a2a"></m-cube>
+    <m-cylinder x="0" y="2" z="0" radius="0.7" height="2" color="#3a3a3a"></m-cylinder>
+    <m-sphere x="0" y="3.8" z="0" radius="0.6" color="#3a3a3a"></m-sphere>
+    <m-sphere x="-0.15" y="3.9" z="0.5" radius="0.08" color="#ff0000">
+      <m-attr-anim attr="opacity" start="0.5" end="1" duration="1800" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-sphere>
+    <m-sphere x="0.15" y="3.9" z="0.5" radius="0.08" color="#ff0000">
+      <m-attr-anim attr="opacity" start="0.5" end="1" duration="1800" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-sphere>
+
+    <m-light type="point" x="0" y="3" z="0" intensity="0.4" color="#ffd700" distance="8"></m-light>
+  </m-group>
+
+
+
+  <!-- === FLOATING ISLANDS === -->
+  <m-group id="island-1" x="-20" y="20" z="-30">
+    <m-sphere x="0" y="0" z="0" radius="4" color="#1a3a2a" sy="0.6">
+      <m-attr-anim attr="y" start="19" end="22" duration="6000" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-sphere>
+    <m-cylinder x="0" y="3" z="0" radius="0.2" height="3" color="#2a1a0a"></m-cylinder>
+    <m-sphere x="0" y="5" z="0" radius="1.5" color="#0a3a1a" opacity="0.9" sy="1.5"></m-sphere>
+    <m-sphere x="1.5" y="1" z="0.5" radius="0.3" color="#00f5ff">
+      <m-attr-anim attr="opacity" start="0.5" end="1" duration="2000" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-sphere>
+    <m-light type="point" x="0" y="2" z="0" intensity="0.4" color="#39ff14" distance="8"></m-light>
+  </m-group>
+
+  <m-group id="island-2" x="25" y="25" z="-45">
+    <m-sphere x="0" y="0" z="0" radius="5" color="#1a2a3a" sy="0.6">
+      <m-attr-anim attr="y" start="24" end="27" duration="7000" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-sphere>
+    <m-cylinder x="0" y="3.5" z="0" radius="0.25" height="4" color="#2a1a0a"></m-cylinder>
+    <m-sphere x="0" y="6.5" z="0" radius="2" color="#0a3a1a" opacity="0.85" sy="1.5"></m-sphere>
+    <m-sphere x="-1" y="1.5" z="-0.5" radius="0.25" color="#b700ff">
+      <m-attr-anim attr="opacity" start="0.4" end="1" duration="2500" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-sphere>
+    <m-light type="point" x="0" y="2" z="0" intensity="0.5" color="#00f5ff" distance="10"></m-light>
+  </m-group>
+
+  <m-group id="island-3" x="-35" y="18" z="-50">
+    <m-sphere x="0" y="0" z="0" radius="3" color="#2a1a3a" sy="0.6">
+      <m-attr-anim attr="y" start="17" end="20" duration="5500" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-sphere>
+    <m-sphere x="0.8" y="1" z="0" radius="0.2" color="#ffd700">
+      <m-attr-anim attr="opacity" start="0.5" end="1" duration="1800" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-sphere>
+    <m-light type="point" x="0" y="1" z="0" intensity="0.3" color="#b700ff" distance="6"></m-light>
+  </m-group>
+
+  <m-group id="island-4" x="40" y="30" z="-20">
+    <m-sphere x="0" y="0" z="0" radius="3.5" color="#1a3a3a" sy="0.6">
+      <m-attr-anim attr="y" start="29" end="32" duration="8000" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-sphere>
+    <m-cylinder x="0" y="2.5" z="0" radius="0.15" height="2.5" color="#2a1a0a"></m-cylinder>
+    <m-sphere x="0" y="4.5" z="0" radius="1.2" color="#0a3a1a" opacity="0.9" sy="1.3"></m-sphere>
+    <m-light type="point" x="0" y="1.5" z="0" intensity="0.3" color="#39ff14" distance="6"></m-light>
+  </m-group>
+
+  <!-- === PORTAL GATEWAYS === -->
+  <!-- Central Portal -->
+  <m-group id="portal-central" x="0" y="0" z="-35">
+    <!-- Frame pillars -->
+    <m-cylinder x="-2.5" y="3" z="0" radius="0.4" height="6" color="#2a2a3a"></m-cylinder>
+    <m-cylinder x="2.5" y="3" z="0" radius="0.4" height="6" color="#2a2a3a"></m-cylinder>
+    <m-cube x="0" y="6.5" z="0" width="6" height="1" depth="1" color="#2a2a3a"></m-cube>
+
+    <!-- Neon frame strips -->
+    <m-cylinder x="-2.5" y="3" z="0.45" radius="0.05" height="6" color="#00f5ff">
+      <m-attr-anim attr="opacity" start="0.6" end="1" duration="1500" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-cylinder>
+    <m-cylinder x="2.5" y="3" z="0.45" radius="0.05" height="6" color="#00f5ff">
+      <m-attr-anim attr="opacity" start="0.6" end="1" duration="1500" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-cylinder>
+
+    <!-- Portal energy ring -->
+    <m-cylinder x="0" y="3.5" z="0" radius="2.2" height="0.08" color="#00f5ff" opacity="0.8">
+      <m-attr-anim attr="ry" start="0" end="360" duration="4000" loop="true" easing="linear"></m-attr-anim>
+      <m-attr-anim attr="rx" start="0" end="15" duration="3000" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-cylinder>
+    <m-cylinder x="0" y="3.5" z="0" radius="1.8" height="0.05" color="#ffd700" opacity="0.6">
+      <m-attr-anim attr="ry" start="360" end="0" duration="5000" loop="true" easing="linear"></m-attr-anim>
+    </m-cylinder>
+
+    <!-- Portal core (glowing disc) -->
+    <m-cylinder x="0" y="3.5" z="0" radius="1.5" height="0.1" color="#4400aa" opacity="0.5" rx="90">
+      <m-attr-anim attr="opacity" start="0.3" end="0.7" duration="2000" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-cylinder>
+
+    <!-- Base platform -->
+    <m-cylinder x="0" y="0.15" z="0" radius="3.5" height="0.3" color="#1a1a2a"></m-cylinder>
+    <!-- Rune circle -->
+    <m-cylinder x="0" y="0.35" z="0" radius="3.2" height="0.05" color="#00f5ff" opacity="0.5">
+      <m-attr-anim attr="opacity" start="0.3" end="0.7" duration="3000" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-cylinder>
+
+    <m-light type="point" x="0" y="3.5" z="1" intensity="3" color="#00f5ff" distance="15"></m-light>
+  </m-group>
+
+  <!-- Sky Portal -->
+  <m-group id="portal-sky" x="40" y="5" z="-40">
+    <m-cylinder x="-2" y="3" z="0" radius="0.35" height="6" color="#2a2a3a"></m-cylinder>
+    <m-cylinder x="2" y="3" z="0" radius="0.35" height="6" color="#2a2a3a"></m-cylinder>
+    <m-cube x="0" y="6.2" z="0" width="5" height="0.8" depth="0.8" color="#2a2a3a"></m-cube>
+    <m-cylinder x="0" y="3.5" z="0" radius="1.8" height="0.06" color="#b700ff" opacity="0.7">
+      <m-attr-anim attr="ry" start="0" end="360" duration="5000" loop="true" easing="linear"></m-attr-anim>
+    </m-cylinder>
+    <m-cylinder x="0" y="3.5" z="0" radius="1.3" height="0.1" color="#660099" opacity="0.5" rx="90">
+      <m-attr-anim attr="opacity" start="0.3" end="0.6" duration="2500" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-cylinder>
+    <m-light type="point" x="0" y="3.5" z="1" intensity="2" color="#b700ff" distance="12"></m-light>
+  </m-group>
+
+
+
+  <!-- === ENERGY CRYSTALS (Collectibles) === -->
+  <m-group id="crystal-1" x="5" y="1.5" z="-8">
+    <m-sphere radius="0.4" color="#00f5ff" opacity="0.8">
+      <m-attr-anim attr="ry" start="0" end="360" duration="3000" loop="true" easing="linear"></m-attr-anim>
+      <m-attr-anim attr="y" start="1.3" end="2" duration="2000" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-sphere>
+    <m-sphere radius="0.25" color="#ffffff" opacity="0.4">
+      <m-attr-anim attr="ry" start="0" end="360" duration="3000" loop="true" easing="linear"></m-attr-anim>
+      <m-attr-anim attr="y" start="1.3" end="2" duration="2000" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-sphere>
+    <m-light type="point" x="0" y="1.5" z="0" intensity="1" color="#00f5ff" distance="4"></m-light>
+  </m-group>
+
+  <m-group id="crystal-2" x="-10" y="1.5" z="5">
+    <m-sphere radius="0.4" color="#39ff14" opacity="0.8">
+      <m-attr-anim attr="ry" start="0" end="360" duration="3500" loop="true" easing="linear"></m-attr-anim>
+      <m-attr-anim attr="y" start="1.2" end="1.9" duration="2200" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-sphere>
+    <m-light type="point" x="0" y="1.5" z="0" intensity="0.8" color="#39ff14" distance="4"></m-light>
+  </m-group>
+
+  <m-group id="crystal-3" x="15" y="1.5" z="-20">
+    <m-sphere radius="0.4" color="#b700ff" opacity="0.8">
+      <m-attr-anim attr="ry" start="0" end="360" duration="2800" loop="true" easing="linear"></m-attr-anim>
+      <m-attr-anim attr="y" start="1.4" end="2.1" duration="1800" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-sphere>
+    <m-light type="point" x="0" y="1.5" z="0" intensity="0.8" color="#b700ff" distance="4"></m-light>
+  </m-group>
+
+  <m-group id="crystal-4" x="-20" y="1.5" z="-30">
+    <m-sphere radius="0.4" color="#ffd700" opacity="0.8">
+      <m-attr-anim attr="ry" start="0" end="360" duration="3200" loop="true" easing="linear"></m-attr-anim>
+      <m-attr-anim attr="y" start="1.3" end="2" duration="2500" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-sphere>
+    <m-light type="point" x="0" y="1.5" z="0" intensity="0.8" color="#ffd700" distance="4"></m-light>
+  </m-group>
+
+  <m-group id="crystal-5" x="35" y="1.5" z="5">
+    <m-sphere radius="0.4" color="#ff6b00" opacity="0.8">
+      <m-attr-anim attr="ry" start="0" end="360" duration="2600" loop="true" easing="linear"></m-attr-anim>
+      <m-attr-anim attr="y" start="1.2" end="1.8" duration="2100" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-sphere>
+    <m-light type="point" x="0" y="1.5" z="0" intensity="0.8" color="#ff6b00" distance="4"></m-light>
+  </m-group>
+
+  <m-group id="crystal-6" x="-5" y="1.5" z="20">
+    <m-sphere radius="0.4" color="#00f5ff" opacity="0.8">
+      <m-attr-anim attr="ry" start="0" end="360" duration="3100" loop="true" easing="linear"></m-attr-anim>
+      <m-attr-anim attr="y" start="1.4" end="2.2" duration="1900" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-sphere>
+    <m-light type="point" x="0" y="1.5" z="0" intensity="0.8" color="#00f5ff" distance="4"></m-light>
+  </m-group>
+
+  <m-group id="crystal-7" x="20" y="1.5" z="15">
+    <m-sphere radius="0.35" color="#39ff14" opacity="0.8">
+      <m-attr-anim attr="ry" start="0" end="360" duration="2900" loop="true" easing="linear"></m-attr-anim>
+      <m-attr-anim attr="y" start="1.3" end="1.9" duration="2300" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-sphere>
+    <m-light type="point" x="0" y="1.5" z="0" intensity="0.7" color="#39ff14" distance="3.5"></m-light>
+  </m-group>
+
+  <m-group id="crystal-8" x="-30" y="1.5" z="10">
+    <m-sphere radius="0.35" color="#b700ff" opacity="0.8">
+      <m-attr-anim attr="ry" start="0" end="360" duration="3400" loop="true" easing="linear"></m-attr-anim>
+      <m-attr-anim attr="y" start="1.2" end="2" duration="2400" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-sphere>
+    <m-light type="point" x="0" y="1.5" z="0" intensity="0.7" color="#b700ff" distance="3.5"></m-light>
+  </m-group>
+
+  <!-- === TELEPORT STATIONS === -->
+  <!-- Spawn Station -->
+  <m-group id="teleport-spawn" x="0" y="0" z="5">
+    <m-cylinder x="0" y="0.15" z="0" radius="2" height="0.3" color="#1a1a2a"></m-cylinder>
+    <m-cylinder x="0" y="0.35" z="0" radius="1.5" height="0.1" color="#001122" opacity="0.8">
+      <m-attr-anim attr="opacity" start="0.6" end="1" duration="2000" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-cylinder>
+    <!-- Rotating rings -->
+    <m-cylinder x="0" y="0.5" z="0" radius="1.8" height="0.04" color="#00f5ff" rx="90">
+      <m-attr-anim attr="ry" start="0" end="360" duration="4000" loop="true" easing="linear"></m-attr-anim>
+    </m-cylinder>
+    <m-cylinder x="0" y="0.6" z="0" radius="1.3" height="0.03" color="#b700ff" rx="90">
+      <m-attr-anim attr="ry" start="360" end="0" duration="3000" loop="true" easing="linear"></m-attr-anim>
+    </m-cylinder>
+    <m-light type="point" x="0" y="1" z="0" intensity="1" color="#00f5ff" distance="5"></m-light>
+  </m-group>
+
+  <!-- Temple Station -->
+  <m-group id="teleport-temple" x="35" y="0" z="-30">
+    <m-cylinder x="0" y="0.15" z="0" radius="2" height="0.3" color="#1a1a2a"></m-cylinder>
+    <m-cylinder x="0" y="0.35" z="0" radius="1.5" height="0.1" color="#001122" opacity="0.8">
+      <m-attr-anim attr="opacity" start="0.5" end="1" duration="2500" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-cylinder>
+    <m-cylinder x="0" y="0.5" z="0" radius="1.8" height="0.04" color="#ffd700" rx="90">
+      <m-attr-anim attr="ry" start="0" end="360" duration="4500" loop="true" easing="linear"></m-attr-anim>
+    </m-cylinder>
+    <m-light type="point" x="0" y="1" z="0" intensity="1" color="#ffd700" distance="5"></m-light>
+  </m-group>
+
+  <!-- === HOLOGRAPHIC WATERFALLS === -->
+  <m-group id="waterfall-1" x="25" y="0" z="-20">
+    <!-- Rock face -->
+    <m-cube x="0" y="6" z="-0.5" width="5" height="14" depth="2" color="#1a1a2a"></m-cube>
+    <!-- Water particle columns -->
+    <m-cylinder x="-1" y="6" z="0.5" radius="0.08" height="12" color="#00f5ff" opacity="0.4">
+      <m-attr-anim attr="opacity" start="0.2" end="0.6" duration="1500" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-cylinder>
+    <m-cylinder x="0" y="6" z="0.5" radius="0.1" height="12" color="#00f5ff" opacity="0.5">
+      <m-attr-anim attr="opacity" start="0.3" end="0.7" duration="1800" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-cylinder>
+    <m-cylinder x="1" y="6" z="0.5" radius="0.07" height="12" color="#00f5ff" opacity="0.35">
+      <m-attr-anim attr="opacity" start="0.15" end="0.55" duration="1300" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-cylinder>
+    <m-cylinder x="0.5" y="6" z="0.5" radius="0.06" height="12" color="#00f5ff" opacity="0.3">
+      <m-attr-anim attr="opacity" start="0.1" end="0.5" duration="2000" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-cylinder>
+    <!-- Splash pool -->
+    <m-cylinder x="0" y="0.05" z="1" radius="3" height="0.1" color="#001133" opacity="0.6">
+      <m-attr-anim attr="opacity" start="0.4" end="0.8" duration="2000" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-cylinder>
+    <m-light type="point" x="0" y="6" z="1" intensity="2" color="#00f5ff" distance="12"></m-light>
+    <m-light type="point" x="0" y="0" z="2" intensity="1" color="#00f5ff" distance="6"></m-light>
+  </m-group>
+
+  <m-group id="waterfall-2" x="-30" y="0" z="-35">
+    <m-cube x="0" y="8" z="-0.5" width="4" height="16" depth="2" color="#1a1a2a"></m-cube>
+    <m-cylinder x="-0.5" y="8" z="0.5" radius="0.09" height="14" color="#b700ff" opacity="0.4">
+      <m-attr-anim attr="opacity" start="0.2" end="0.6" duration="1600" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-cylinder>
+    <m-cylinder x="0.3" y="8" z="0.5" radius="0.07" height="14" color="#b700ff" opacity="0.35">
+      <m-attr-anim attr="opacity" start="0.15" end="0.5" duration="1900" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-cylinder>
+    <m-cylinder x="0" y="0.05" z="1" radius="2.5" height="0.1" color="#110033" opacity="0.5">
+      <m-attr-anim attr="opacity" start="0.3" end="0.7" duration="2200" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-cylinder>
+    <m-light type="point" x="0" y="8" z="1" intensity="1.5" color="#b700ff" distance="10"></m-light>
+  </m-group>
+
+  <!-- === INTERACTIVE TERMINALS === -->
+  <m-group id="terminal-1" x="5" y="0" z="-10">
+    <m-cylinder x="0" y="0.5" z="0" radius="0.15" height="1" color="#1a1a2a"></m-cylinder>
+    <m-cube x="0" y="1.3" z="0" width="1" height="0.7" depth="0.05" color="#001122" rx="-10">
+      <m-attr-anim attr="opacity" start="0.8" end="1" duration="1500" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-cube>
+    <m-cylinder x="0" y="0" z="0" radius="0.4" height="0.1" color="#1a1a2a"></m-cylinder>
+    <m-light type="point" x="0" y="1.5" z="0.5" intensity="0.5" color="#00f5ff" distance="3"></m-light>
+  </m-group>
+
+  <m-group id="terminal-2" x="-15" y="0" z="-25">
+    <m-cylinder x="0" y="0.5" z="0" radius="0.15" height="1" color="#1a1a2a"></m-cylinder>
+    <m-cube x="0" y="1.3" z="0" width="1" height="0.7" depth="0.05" color="#001122" rx="-10">
+      <m-attr-anim attr="opacity" start="0.8" end="1" duration="1800" loop="true" easing="easeInOut"></m-attr-anim>
+    </m-cube>
+    <m-cylinder x="0" y="0" z="0" radius="0.4" height="0.1" color="#1a1a2a"></m-cylinder>
+    <m-light type="point" x="0" y="1.5" z="0.5" intensity="0.5" color="#00f5ff" distance="3"></m-light>
+  </m-group>
+
+
+
+  <!-- === POSITION PROBE (Player Detection) === -->
+  <m-position-probe id="player-probe" range="100" interval="500"></m-position-probe>
+
+  <!-- === INTERACTIVE SCRIPT === -->
+  <script>
+    // APE ORIGIN: The Lost Jungle - Interactive Script
+    const crystals = document.querySelectorAll('[id^="crystal-"]');
+    let crystalsCollected = 0;
+    const totalCrystals = crystals.length;
+
+    // Crystal collection system
+    const probe = document.getElementById('player-probe');
+    if (probe) {
+      probe.addEventListener('positionenter', (event) => {
+        const userPos = event.detail;
+        checkCrystalProximity(userPos);
+      });
+    }
+
+    function checkCrystalProximity(userPos) {
+      crystals.forEach((crystal) => {
+        if (crystal.style.display === 'none') return;
+        const cx = parseFloat(crystal.getAttribute('x')) || 0;
+        const cz = parseFloat(crystal.getAttribute('z')) || 0;
+        const dist = Math.sqrt(
+          Math.pow(userPos.x - cx, 2) + Math.pow(userPos.z - cz, 2)
+        );
+        if (dist < 3) {
+          collectCrystal(crystal);
+        }
+      });
+    }
+
+    function collectCrystal(crystal) {
+      crystal.style.display = 'none';
+      crystalsCollected++;
+      console.log(`Crystal collected! ${crystalsCollected}/${totalCrystals}`);
+    }
+
+    // Portal activation animation enhancement
+    const portals = document.querySelectorAll('[id^="portal-"]');
+    portals.forEach((portal) => {
+      // Portals are always animated via m-attr-anim
+    });
+
+    // Day/night cycle simulation (color shift on main light)
+    const mainLight = document.querySelector('m-light[type="directional"]');
+    let timeOfDay = 0;
+    setInterval(() => {
+      timeOfDay += 0.01;
+      if (timeOfDay > Math.PI * 2) timeOfDay = 0;
+      const intensity = 0.3 + Math.sin(timeOfDay) * 0.3;
+      if (mainLight) {
+        mainLight.setAttribute('intensity', Math.max(0.1, intensity).toString());
+      }
+    }, 200);
+
+    console.log('APE ORIGIN: The Lost Jungle - World Initialized');
+    console.log('Explore the cyber jungle, collect crystals, and discover ancient secrets!');
+  </script>
+
+</m-group>
